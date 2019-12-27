@@ -169,6 +169,12 @@ try
         }
     }
 
+    # Attempt to test User Profile Disk path
+    if  (-Not $(Test-Path 'filesystem::' + $UpdPath))
+    {
+        Write-Error 'User Profile Disk Path does not exist. Abort!'
+    }
+
     # Create new session collection, or on error add system to existing collection
     try
     {
